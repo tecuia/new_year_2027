@@ -78,13 +78,15 @@
 
         <!-- СЦЕНА 4: Пэкшот -->
         <section id="scene-packshot" class="scene">
-            <div class="ball-video-container" style="top: 231px;">
-                <video id="packshot-video" class="news-video" playsinline loop muted poster="imgs/snowflakes_packshot_poster.jpg">
-                    <source src="vid/snowflakes_packshot.mp4" type="video/mp4">
-                </video>
-            </div>
+            <!-- Затемненный фон -->
+            <img src="imgs/bg_clear_mobile.png" class="bg-img dark-bg" alt="Фон">
             
-            <img src="imgs/bg_maska_mobile.png" class="mask-overlay" alt="Маска">
+            <!-- Видео с шаром (без обрезки в круг) -->
+            <video id="packshot-video" class="packshot-video" playsinline loop muted poster="imgs/snowflakes_packshot_poster.jpg">
+                <source src="vid/snowflakes_packshot.mp4" type="video/mp4">
+            </video>
+            
+            <!-- Градиенты для затемнения краев -->
             <div class="overlay-top"></div>
             <div class="overlay-bottom"></div>
             

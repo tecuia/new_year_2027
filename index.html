@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Хорошие новости из 2027</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600&family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="app-wrapper">
+    <div id="app">
+        <button id="audio-btn">
+            <img src="imgs/sound_on.svg" id="sound-icon" alt="Sound">
+        </button>
+        <audio id="bg-music" src="vid/GracefulNewYearWaltz_1.mp3" loop></audio>
+
+        <!-- СЦЕНА 1: Вступление -->
+        <section id="scene-intro" class="scene active">
+            <img src="imgs/bg_clear_mobile.png" class="bg-img" alt="Фон">
+            <div class="overlay-top"></div>
+            <div class="overlay-bottom"></div>
+            
+            <img src="imgs/inpool_logo_white.svg" class="logo anim-1" alt="Interpool">
+            <img src="imgs/title_mobile.png" class="title-img anim-2" alt="Хорошие новости из 2027">
+            <div class="subtitle anim-3">новогодний выпуск</div>
+            
+            <div class="text-box intro-box anim-4">
+                <span class="no-wrap">Мы в <span class="red-bold">Interpool</span> помогаем</span><br>
+                брендам привлекать<br>
+                внимание.<br>
+                А перед Новым годом хотим<br>
+                обратить ваше внимание<br>
+                на хорошее, которое<br>
+                обязательно случится с вами<br>
+                в следующем году.
+            </div>
+            
+            <!-- Кнопка управляется через JS (класс .show) -->
+            <button id="btn-shake" class="btn">Встряхнуть шар</button>
+        </section>
+
+        <!-- СЦЕНА 2: Тряска шара -->
+        <section id="scene-shake" class="scene">
+            <video id="shake-video" class="bg-img" playsinline muted></video>
+            <div class="overlay-top"></div>
+            <div class="overlay-bottom"></div>
+            
+            <img src="imgs/inpool_logo_white.svg" class="logo" alt="Interpool">
+            <img src="imgs/title_mobile.png" class="title-img" alt="Хорошие новости из 2027">
+        </section>
+
+        <!-- СЦЕНА 3: Новость -->
+        <section id="scene-news" class="scene">
+            <div class="ball-video-container" style="top: 207px;">
+                <video id="news-video" class="news-video" playsinline muted></video>
+            </div>
+            
+            <img src="imgs/bg_maska_mobile.png" class="mask-overlay" alt="Маска">
+            <div class="overlay-top"></div>
+            <div class="overlay-bottom"></div>
+            
+            <img src="imgs/inpool_logo_white.svg" class="logo" alt="Interpool">
+            <img src="imgs/title_mobile.png" class="title-img small-title" alt="Хорошие новости из 2027">
+            
+            <!-- Класс anim-news-text для перезапуска анимации через JS -->
+            <div id="news-main-title" class="news-title anim-news-text"></div>
+            
+            <div class="text-box news-box anim-news-text">
+                <div id="news-text-block"></div>
+            </div>
+            
+            <button id="btn-next-news" class="btn">Ещё история</button>
+        </section>
+
+        <!-- СЦЕНА 4: Пэкшот -->
+        <section id="scene-packshot" class="scene">
+            <div class="ball-video-container" style="top: 231px;">
+                <video id="packshot-video" class="news-video" playsinline loop muted poster="imgs/snowflakes_packshot_poster.jpg">
+                    <source src="vid/snowflakes_packshot.mp4" type="video/mp4">
+                </video>
+            </div>
+            
+            <img src="imgs/bg_maska_mobile.png" class="mask-overlay" alt="Маска">
+            <div class="overlay-top"></div>
+            <div class="overlay-bottom"></div>
+            
+            <img src="imgs/inpool_logo_white.svg" class="logo" alt="Interpool">
+            <img src="imgs/title_mobile.png" class="title-img" alt="Хорошие новости из 2027">
+            
+            <div class="text-box packshot-box">
+                <div class="red-text">Дорогие друзья!</div>
+                <div class="main-text">
+                    <p>Старый год уже завершает свой путь, и мы хотим сказать главное — спасибо, что вы были с нами.</p>
+                    <p>Спасибо за ваше доверие, за совместные победы и даже за задачи, которые заставляли нас расти.</p>
+                    <p>Пусть Новый год принесёт вам поводов для гордости, тёплых вечеров в кругу близких и энергии для всего задуманного.</p>
+                </div>
+                <div class="red-text">Счастья, здоровья<br>и новых горизонтов!</div>
+            </div>
+            
+            <div class="footer-text">Команда INTERPOOL</div>
+        </section>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

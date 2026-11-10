@@ -1,0 +1,353 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    overflow: hidden;
+    font-family: 'Montserrat', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+#app-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100dvh;
+    overflow: hidden;
+}
+
+#app {
+    position: relative;
+    width: 360px;
+    height: 800px;
+    background: #F4F0E5;
+    overflow: hidden;
+    transform-origin: center center;
+}
+
+.scene {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.6s ease-in-out, visibility 0.6s;
+    z-index: 1;
+}
+
+.scene.active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 10;
+}
+
+.bg-img, .main-video {
+    position: absolute;
+    width: 480px;
+    height: 800px;
+    left: -60px;
+    top: 0;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.overlay-top {
+    position: absolute;
+    width: 360px;
+    height: 330px;
+    left: 0;
+    top: 0;
+    background: linear-gradient(180deg, #311305 0%, rgba(80, 42, 29, 0) 100%);
+    mix-blend-mode: multiply;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.overlay-bottom {
+    position: absolute;
+    width: 360px;
+    height: 497px;
+    left: 0;
+    top: 303px;
+    background: linear-gradient(0deg, #311305 0%, rgba(80, 42, 29, 0) 100%);
+    mix-blend-mode: multiply;
+    opacity: 0.9;
+    z-index: 2;
+    pointer-events: none;
+}
+
+#scene-news .overlay-bottom,
+#scene-packshot .overlay-bottom {
+    height: 425px;
+    top: 375px;
+}
+
+/* --- АНИМАЦИИ ПОЯВЛЕНИЯ --- */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.anim-1 { opacity: 0; animation: fadeIn 1s ease forwards; animation-delay: 0.2s; }
+.anim-2 { opacity: 0; animation: fadeInUp 1s ease forwards; animation-delay: 0.8s; }
+.anim-3 { opacity: 0; animation: fadeInUp 1s ease forwards; animation-delay: 1.4s; }
+.anim-4 { opacity: 0; animation: fadeInUp 1s ease forwards; animation-delay: 2.0s; }
+
+.anim-news-text {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards;
+}
+/* -------------------------- */
+
+.logo {
+    position: absolute;
+    width: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 20px;
+    z-index: 5;
+}
+
+.title-img {
+    position: absolute;
+    width: 251.83px;
+    left: 53.59px;
+    top: 70px;
+    z-index: 5;
+}
+
+.small-title {
+    width: 146.9px;
+    left: 106.46px;
+}
+
+.subtitle {
+    position: absolute;
+    width: 360px;
+    left: 0;
+    top: 205px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    z-index: 5;
+}
+
+.text-box {
+    position: absolute;
+    left: 16px;
+    width: 328px;
+    background: #210A04;
+    border-radius: 16px;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.intro-box {
+    top: 252px;
+    left: 8px;
+    width: 344px;
+    height: 224px;
+    opacity: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 120%;
+    text-align: center;
+    padding: 10px 0;
+    letter-spacing: -0.2px;
+    /* Переопределяем анимацию для этого блока, чтобы сохранить прозрачность 0.7 после появления */
+    animation: introFadeIn 1s ease forwards;
+    animation-delay: 2.0s;
+}
+
+@keyframes introFadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 0.7; transform: translateY(0); }
+}
+
+.text-box .red-bold {
+    color: #B60225;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 120%;
+}
+
+.no-wrap {
+    white-space: nowrap;
+}
+
+.news-box {
+    top: 537px;
+    height: 130px;
+    opacity: 0.7;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 120%;
+    padding: 15px;
+}
+
+.packshot-box {
+    top: 231px;
+    height: 400px;
+    opacity: 0.8;
+    padding: 20px 15px;
+    justify-content: center;
+    gap: 8px;
+}
+
+.packshot-box .main-text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 120%;
+    color: #FFFFFF;
+}
+
+.packshot-box .main-text p {
+    margin-bottom: 4px;
+}
+
+.packshot-box .main-text p:last-child {
+    margin-bottom: 0;
+}
+
+.packshot-box .red-text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 120%;
+    color: #B60225;
+}
+
+.btn {
+    position: absolute;
+    width: 328px;
+    height: 52px;
+    left: 16px;
+    top: 688px;
+    background: #B60225;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 100%;
+    color: #FFFFFF;
+    cursor: pointer;
+    z-index: 20;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
+.btn.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.btn.shake-anim {
+    animation: shake 1.5s infinite;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+    20%, 40%, 60%, 80% { transform: translateX(4px); }
+}
+
+.ball-video-container {
+    position: absolute;
+    width: 325px;
+    height: 328px;
+    left: 17.5px;
+    border-radius: 50%;
+    overflow: hidden;
+    z-index: 3;
+}
+
+.news-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.mask-overlay {
+    position: absolute;
+    width: 480px;
+    height: 800px;
+    left: -60px;
+    top: 0;
+    object-fit: cover;
+    z-index: 4;
+    pointer-events: none;
+}
+
+.news-title {
+    position: absolute;
+    width: 326px;
+    left: 17px;
+    top: 145px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 100%;
+    text-align: center;
+    color: #FFFFFF;
+    z-index: 5;
+}
+
+.footer-text {
+    position: absolute;
+    width: 328px;
+    left: 16px;
+    top: 717px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 120%;
+    text-align: center;
+    color: #FFFFFF;
+    z-index: 5;
+}
+
+#audio-btn {
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    left: 314px;
+    top: 754px;
+    background: transparent;
+    border: none;
+    z-index: 100;
+    cursor: pointer;
+    padding: 0;
+}
+
+#audio-btn img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}

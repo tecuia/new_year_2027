@@ -385,64 +385,144 @@ body, html {
 }
 
 @media (max-width: 767px) {
+    #app {
+        width: 100vw;
+        height: 100dvh;
+    }
+
+    /* Фон на весь экран */
     .bg-img, 
     .mask-overlay {
         width: 100%;
         height: 100%;
-        min-width: 100%;
-        min-height: 100%;
         left: 0;
         top: 0;
         object-fit: cover;
         object-position: center;
     }
 
+    /* Возвращаем затемнение на весь фон */
+    .overlay-top {
+        width: 100%;
+        height: 40vh;
+        left: 0;
+        top: 0;
+    }
+
+    .overlay-bottom {
+        width: 100%;
+        height: 60vh;
+        left: 0;
+        top: 40vh;
+    }
+
+    #scene-news .overlay-bottom,
+    #scene-packshot .overlay-bottom {
+        height: 60vh;
+        top: 40vh;
+    }
+
+    .logo {
+        width: 25vw;
+        top: 2.5vh;
+    }
+
+    .title-img {
+        width: 70vw;
+        left: calc(50% - 35vw); 
+        top: 8vh;
+    }
+
+    .small-title {
+        width: 40vw;
+        left: calc(50% - 20vw);
+        top: 8vh;
+    }
+
+    @keyframes shrinkTitle {
+        from { width: 70vw; left: calc(50% - 35vw); }
+        to { width: 40vw; left: calc(50% - 20vw); }
+    }
+
+    @keyframes expandTitle {
+        from { width: 40vw; left: calc(50% - 20vw); }
+        to { width: 70vw; left: calc(50% - 35vw); }
+    }
+
+    .subtitle {
+        width: 100%;
+        top: 28vh;
+        font-size: 3.8vw;
+    }
+
     .intro-box {
-        line-height: 125%; 
-        height: auto; 
-        min-height: 224px;
-        padding: 15px 10px;
+        width: 92vw;
+        left: 4vw;
+        top: 34vh;
+        min-height: 26vh;
+        padding: 2vh 4vw;
+        font-size: clamp(14px, 4.5vw, 18px);
+    }
+    
+    .intro-box .red-bold {
+        font-size: clamp(14px, 4.5vw, 18px);
     }
     
     .intro-sentence-2 {
-        margin-top: 12px; 
-    }
-    
-    .subtitle {
-        top: 215px; 
-    }
-
-    .news-title {
-        top: 160px;
-        font-size: 20px;
-        line-height: 110%;
-        width: 300px;
-        left: 30px;
-    }
-
-    .ball-video-container {
-        top: 210px; 
-    }
-
-    .news-box {
-        top: 560px;
-        height: auto;
-        min-height: 130px;
+        margin-top: 2vh; 
     }
 
     .btn {
-        transition: opacity 0.4s ease, transform 0.4s ease;
+        width: 92vw;
+        left: 4vw;
+        height: 7vh;
+        font-size: clamp(16px, 4.5vw, 20px);
+    }
+
+    #btn-shake {
+        top: auto;
+        bottom: 8vh;
+    }
+
+    .news-title {
+        width: 90vw;
+        left: 5vw;
+        top: 21vh; 
+        font-size: clamp(18px, 5vw, 24px);
+    }
+
+    .ball-video-container {
+        width: 90vw;
+        height: 90vw;
+        left: 5vw;
+        top: 26vh;
+    }
+
+    .news-box {
+        width: 92vw;
+        left: 4vw;
+        top: auto;
+        bottom: 10vh; 
+        min-height: 18vh;
+        font-size: clamp(14px, 4vw, 16px);
+        padding: 2vh 4vw;
     }
 
     .btn-next {
-        top: 610px;
+        top: auto;
+        bottom: 14vh;
+        width: 92vw;
+        left: 4vw;
         background: #F5C642;
         color: #210A04;
         transform: translateY(-15px);
     }
 
     .btn-congrats {
-        top: 690px;
+        top: auto;
+        bottom: 4vh;
+        width: 92vw;
+        left: 4vw;
         background: #B60225;
         color: #FFFFFF;
         transform: translateY(15px);
@@ -461,6 +541,51 @@ body, html {
     .btn-congrats.hide-down {
         transform: translateY(40px);
         opacity: 0;
+    }
+
+    .packshot-box {
+        width: 90vw;
+        left: 5vw;
+        top: 26vh; 
+        min-height: 50vh; 
+        padding: 4vh 6vw; 
+        gap: 2.5vh; 
+        justify-content: center;
+    }
+
+    .packshot-box .main-text {
+        font-size: clamp(14px, 4vw, 17px);
+        line-height: 135%; 
+    }
+
+    .packshot-box .main-text p {
+        margin-bottom: 1.5vh; 
+    }
+
+    .packshot-box .main-text p:last-child {
+        margin-bottom: 0;
+    }
+
+    .packshot-box .red-text {
+        font-size: clamp(18px, 5vw, 22px);
+        margin-top: 0 !important; 
+    }
+
+    .packshot-box .main-text {
+        font-size: clamp(18px, 4vw, 18px);
+    }
+
+    .packshot-box .red-text {
+        font-size: clamp(18px, 5vw, 22px);
+    }
+
+    #audio-btn {
+        width: 10vw;
+        height: 10vw;
+        left: auto;
+        right: 4vw;
+        top: auto;
+        bottom: 4vh;
     }
 }
 
@@ -506,15 +631,13 @@ body, html {
 
     .title-img {
         width: 320px;
-        left: 50%;
         left: calc(50% - 160px);
         top: 90px;
     }
 
     .small-title {
         width: 187px;
-        left: 50%;
-        transform: translateX(-50%);
+        left: calc(50% - 93.5px);
         top: 90px;
     }
 

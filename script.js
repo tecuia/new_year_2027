@@ -1,17 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const app = document.getElementById('app');
     
-    function scaleApp() {
-        if (window.innerWidth < 768) {
-            const scale = Math.max(window.innerWidth / 360, window.innerHeight / 800);
-            app.style.transform = `scale(${scale})`;
-        } else {
-            app.style.transform = '';
-        }
-    }
-    
-    window.addEventListener('resize', scaleApp);
-    scaleApp();
+
 
     const scenes = {
         intro: document.getElementById('scene-intro'),

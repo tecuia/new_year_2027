@@ -143,7 +143,7 @@ body, html {
     line-height: 100%;
     text-align: center;
     text-transform: uppercase;
-    color: #FFFFFF;
+    color: #F5EBDD;
     z-index: 5;
 }
 
@@ -159,7 +159,7 @@ body, html {
     align-items: center;
     justify-content: center;
     text-align: center;
-    color: #FFFFFF;
+    color: #F5EBDD;
 }
 
 .intro-box {
@@ -179,13 +179,17 @@ body, html {
     animation-delay: 2.0s;
 }
 
+.intro-sentence-2 {
+    margin-top: 12px; 
+}
+
 @keyframes introFadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
 .text-box .red-bold {
-    color: #B60225;
+    color: #E8CC91;
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     font-size: 18px;
@@ -223,11 +227,11 @@ body, html {
     font-weight: 500;
     font-size: 18px;
     line-height: 120%;
-    color: #FFFFFF;
+    color: #F5EBDD;
 }
 
 .packshot-box .main-text p {
-    margin-bottom: 4px;
+    margin-bottom: 12px;
 }
 
 .packshot-box .main-text p:last-child {
@@ -255,7 +259,7 @@ body, html {
     font-weight: 500;
     font-size: 20px;
     line-height: 100%;
-    color: #FFFFFF;
+    color: #F5EBDD;
     cursor: pointer;
     z-index: 20;
     opacity: 0;
@@ -315,7 +319,7 @@ body, html {
     font-size: 24px;
     line-height: 100%;
     text-align: center;
-    color: #FFFFFF;
+    color: #F5EBDD;
     z-index: 5;
 }
 
@@ -524,7 +528,7 @@ body, html {
         width: 92vw;
         left: 4vw;
         background: #B60225;
-        color: #FFFFFF;
+        color: #F5EBDD;
         transform: translateY(15px);
     }
 
@@ -559,7 +563,7 @@ body, html {
     }
 
     .packshot-box .main-text p {
-        margin-bottom: 1.5vh; 
+        margin-bottom: 8px; 
     }
 
     .packshot-box .main-text p:last-child {
@@ -653,7 +657,7 @@ body, html {
 
     .subtitle {
         width: 100%;
-        top: 270px; 
+        top: 300px; 
         font-size: 16px;
     }
 
@@ -716,7 +720,7 @@ body, html {
     .btn-congrats {
         bottom: 80px;
         background: #B60225;
-        color: #FFFFFF;
+        color: #F5EBDD;
         transform: translateY(15px);
     }
 

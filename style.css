@@ -376,3 +376,7 @@ body, html {
 #scene-packshot .overlay-bottom {
     z-index: 3; 
 }
+
+#app.instant .scene {
+    transition: none !important;
+}

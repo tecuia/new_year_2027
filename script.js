@@ -69,7 +69,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return array;
     }
 
-    // ТЕПЕРЬ ТУТ СТРОГО 2 ИСТОРИИ
     const newsData = [
         {
             video: 'vid/news1.mp4',
@@ -85,7 +84,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     shuffleArray(newsData);
 
-    function showScene(sceneName) {
+    newsData.forEach(news => {
+        const preloadVid = document.createElement('video');
+        preloadVid.src = news.video;
+        preloadVid.preload = 'auto';
+    });
+
+    function showScene(sceneName, isInstant = false) {
+        if (isInstant) {
+            app.classList.add('instant');
+        } else {
+            app.classList.remove('instant');
+        }
+        
         Object.values(scenes).forEach(scene => scene.classList.remove('active'));
         if (scenes[sceneName]) {
             scenes[sceneName].classList.add('active');
@@ -125,8 +136,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function startNewsScene() {
-        showScene('news');
+        showScene('news', true); 
         currentNewsIndex = 0;
+        
+        shakeVideo.pause(); 
+        
         loadNews(currentNewsIndex);
     }
 

@@ -39,7 +39,7 @@
                 в следующем году.
             </div>
             
-            <!-- Кнопка управляется через JS (класс .show) -->
+            <!-- Кнопка управляется через JS -->
             <button id="btn-shake" class="btn">Встряхнуть шар</button>
         </section>
 
@@ -55,6 +55,8 @@
 
         <!-- СЦЕНА 3: Новость -->
         <section id="scene-news" class="scene">
+            <img src="imgs/bg_clear_mobile.png" class="bg-img" alt="Фон">
+            
             <div class="ball-video-container" style="top: 207px;">
                 <video id="news-video" class="news-video" playsinline muted></video>
             </div>
@@ -66,7 +68,6 @@
             <img src="imgs/inpool_logo_white.svg" class="logo" alt="Interpool">
             <img src="imgs/title_mobile.png" class="title-img small-title" alt="Хорошие новости из 2027">
             
-            <!-- Класс anim-news-text для перезапуска анимации через JS -->
             <div id="news-main-title" class="news-title anim-news-text"></div>
             
             <div class="text-box news-box anim-news-text">
@@ -78,15 +79,12 @@
 
         <!-- СЦЕНА 4: Пэкшот -->
         <section id="scene-packshot" class="scene">
-            <!-- Затемненный фон -->
             <img src="imgs/bg_clear_mobile.png" class="bg-img dark-bg" alt="Фон">
             
-            <!-- Видео с шаром (без обрезки в круг) -->
             <video id="packshot-video" class="packshot-video" playsinline loop muted poster="imgs/snowflakes_packshot_poster.jpg">
                 <source src="vid/snowflakes_packshot.mp4" type="video/mp4">
             </video>
             
-            <!-- Градиенты для затемнения краев -->
             <div class="overlay-top"></div>
             <div class="overlay-bottom"></div>
             

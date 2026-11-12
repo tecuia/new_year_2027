@@ -20,7 +20,10 @@
 
         <!-- СЦЕНА 1: Вступление -->
         <section id="scene-intro" class="scene active">
-            <img src="imgs/bg_clear_mobile.png" class="bg-img" alt="Фон">
+            <picture>
+                <source media="(min-width: 768px)" srcset="imgs/bg_clear_desk.png">
+                <img src="imgs/bg_clear_mobile.png" class="bg-img" alt="Фон">
+            </picture>
             <div class="overlay-top"></div>
             <div class="overlay-bottom"></div>
             
@@ -29,17 +32,20 @@
             <div class="subtitle anim-3">новогодний выпуск</div>
             
             <div class="text-box intro-box anim-4">
-                <span class="no-wrap">Мы в <span class="red-bold">Interpool</span> помогаем</span><br>
-                брендам привлекать<br>
-                внимание.<br>
-                А перед Новым годом хотим<br>
-                обратить ваше внимание<br>
-                на хорошее, которое<br>
-                обязательно случится с вами<br>
-                в следующем году.
+                <div class="intro-sentence-1">
+                    <span class="no-wrap">Мы в <span class="red-bold">Interpool</span> помогаем</span><br>
+                    брендам привлекать<br>
+                    внимание.
+                </div>
+                <div class="intro-sentence-2">
+                    А перед Новым годом хотим<br>
+                    обратить ваше внимание<br>
+                    на хорошее, которое<br>
+                    <span class="red-bold">обязательно случится</span> с вами<br>
+                    в следующем году.
+                </div>
             </div>
             
-            <!-- Кнопка управляется через JS -->
             <button id="btn-shake" class="btn">Встряхнуть шар</button>
         </section>
 
@@ -55,13 +61,19 @@
 
         <!-- СЦЕНА 3: Новость -->
         <section id="scene-news" class="scene">
-            <img src="imgs/bg_clear_mobile.png" class="bg-img" alt="Фон">
-            
-            <div class="ball-video-container" style="top: 207px;">
+            <picture>
+                <source media="(min-width: 768px)" srcset="imgs/bg_clear_desk.jpg">
+                <img src="imgs/bg_clear_mobile.png" class="bg-img" alt="Фон">
+            </picture>
+
+            <div class="ball-video-container">
                 <video id="news-video" class="news-video" playsinline muted></video>
             </div>
-            
-            <img src="imgs/bg_maska_mobile.png" class="mask-overlay" alt="Маска">
+
+            <picture>
+                <source media="(min-width: 768px)" srcset="imgs/bg_maska_desk.png">
+                <img src="imgs/bg_maska_mobile.png" class="mask-overlay" alt="Маска">
+            </picture>
             <div class="overlay-top"></div>
             <div class="overlay-bottom"></div>
             
@@ -74,7 +86,8 @@
                 <div id="news-text-block"></div>
             </div>
             
-            <button id="btn-next-news" class="btn">Ещё история</button>
+            <button id="btn-next-news" class="btn btn-next">Ещё новость</button>
+            <button id="btn-go-congrats" class="btn btn-congrats">К поздравлению</button>
         </section>
 
         <!-- СЦЕНА 4: Пэкшот -->
@@ -92,16 +105,14 @@
             <img src="imgs/title_mobile.png" class="title-img" alt="Хорошие новости из 2027">
             
             <div class="text-box packshot-box">
-                <div class="red-text">Дорогие друзья!</div>
                 <div class="main-text">
-                    <p>Старый год уже завершает свой путь, и мы хотим сказать главное — спасибо, что вы были с нами.</p>
-                    <p>Спасибо за ваше доверие, за совместные победы и даже за задачи, которые заставляли нас расти.</p>
-                    <p>Пусть Новый год принесёт вам поводов для гордости, тёплых вечеров в кругу близких и энергии для всего задуманного.</p>
+                    <p>Спасибо, что были с нами в 2026 году — за доверие, совместные проекты и победы.</p>
+                    <p>В нашем шаре уже появились хорошие новости из будущего. Пусть в 2027-м у вас будет ещё больше своих — о том, что получилось, сбылось и превзошло ожидания.</p>
+                    <p>Желаем здоровья, тепла близких и радости, которой хочется делиться.</p>
                 </div>
-                <div class="red-text">Счастья, здоровья<br>и новых горизонтов!</div>
+                <div class="red-text" style="margin-top: 15px;">С Новым годом!</div>
             </div>
-            
-            <div class="footer-text">Команда INTERPOOL</div>
+    
         </section>
     </div>
 </div>

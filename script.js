@@ -2,8 +2,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const app = document.getElementById('app');
     
     function scaleApp() {
-        const scale = Math.min(window.innerWidth / 360, window.innerHeight / 800);
-        app.style.transform = `scale(${scale})`;
+        if (window.innerWidth < 768) {
+            const scale = Math.max(window.innerWidth / 360, window.innerHeight / 800);
+            app.style.transform = `scale(${scale})`;
+        } else {
+            app.style.transform = '';
+        }
     }
     
     window.addEventListener('resize', scaleApp);
@@ -18,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const btnShake = document.getElementById('btn-shake');
     const btnNextNews = document.getElementById('btn-next-news');
+    const btnGoCongrats = document.getElementById('btn-go-congrats');
     
     const shakeVideo = document.getElementById('shake-video');
     const newsVideo = document.getElementById('news-video');
@@ -34,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentNewsIndex = 0;
     let isMusicPlaying = true;
 
-    bgMusic.volume = 0.1;
+    bgMusic.volume = 0.4;
 
     bgMusic.play().catch(() => {
         const playAudioOnFirstClick = () => {
@@ -103,13 +108,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Анимации текста занимают 2 секунды. Ждем еще 3.5 сек = 5.5 сек.
     setTimeout(() => {
         btnShake.classList.add('show', 'shake-anim');
     }, 5500);
 
-    // Автопереход через 5 секунд после появления кнопки = 10.5 сек.
-    introTimer = setTimeout(startShakeScene, 10500);
+    introTimer = setTimeout(startShakeScene, 15500);
 
     btnShake.addEventListener('click', () => {
         clearTimeout(introTimer);
@@ -146,17 +149,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function loadNews(index) {
         clearTimeout(newsTimer);
-        btnNextNews.classList.remove('show');
+        
+        btnNextNews.classList.remove('show', 'hide-up');
+        btnGoCongrats.classList.remove('show', 'hide-down');
+        
+        document.querySelector('.news-box').classList.remove('hide');
         
         const currentNews = newsData[index];
         newsMainTitle.innerHTML = currentNews.title.replace(/\n/g, '<br>');
         newsTextBlock.textContent = currentNews.text;
         
-        // Перезапускаем анимацию появления текста
         const animElements = document.querySelectorAll('.anim-news-text');
         animElements.forEach(el => {
             el.style.animation = 'none';
-            el.offsetHeight; // Вызов принудительного перерасчета (reflow)
+            el.offsetHeight;
             el.style.animation = null; 
         });
 
@@ -168,21 +174,40 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function onNewsVideoEnded() {
-        // Если это последняя (вторая) новость -> скрываем кнопку и ждем 5 сек до пэкшота
+        document.querySelector('.news-box').classList.add('hide');
+
         if (currentNewsIndex >= newsData.length - 1) {
             btnNextNews.classList.remove('show');
-            newsTimer = setTimeout(startPackshotScene, 5000);
         } else {
-            // Если это первая новость -> показываем кнопку и ждем 5 сек
             btnNextNews.classList.add('show');
-            newsTimer = setTimeout(startPackshotScene, 5000);
         }
+        
+        btnGoCongrats.classList.add('show');
+        
+        newsTimer = setTimeout(startPackshotScene, 10000);
     }
 
     btnNextNews.addEventListener('click', () => {
         clearTimeout(newsTimer);
-        currentNewsIndex++;
-        loadNews(currentNewsIndex);
+        
+        btnNextNews.classList.add('hide-up');
+        btnGoCongrats.classList.add('hide-down');
+        
+        setTimeout(() => {
+            currentNewsIndex++;
+            loadNews(currentNewsIndex);
+        }, 400);
+    });
+
+    btnGoCongrats.addEventListener('click', () => {
+        clearTimeout(newsTimer);
+        
+        btnNextNews.classList.add('hide-up');
+        btnGoCongrats.classList.add('hide-down');
+        
+        setTimeout(() => {
+            startPackshotScene();
+        }, 400);
     });
 
     function startPackshotScene() {

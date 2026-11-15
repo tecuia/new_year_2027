@@ -113,11 +113,21 @@ document.addEventListener('DOMContentLoaded', () => {
         showScene('shake');
         btnShake.classList.remove('show', 'shake-anim');
         
-        const shakeVideos = [
-            'vid/snowball_1_shake_mobile.mp4',
-            'vid/snowball_2_shake_mobile.mp4',
-            'vid/snowball_3_shake_mobile.mp4'
-        ];
+        let shakeVideos;
+        
+        if (window.innerWidth >= 768) {
+            shakeVideos = [
+                'vid/snowball_1_shake_desk.mp4',
+                'vid/snowball_2_shake_desk.mp4',
+                'vid/snowball_3_shake_desk.mp4'
+            ];
+        } else {
+            shakeVideos = [
+                'vid/snowball_1_shake_mobile.mp4',
+                'vid/snowball_2_shake_mobile.mp4',
+                'vid/snowball_3_shake_mobile.mp4'
+            ];
+        }
         
         const randomVideo = shakeVideos[Math.floor(Math.random() * shakeVideos.length)];
         shakeVideo.src = randomVideo;
@@ -129,11 +139,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function startNewsScene() {
-        showScene('news', true); 
+        const isInstant = window.innerWidth < 768; 
+        showScene('news', isInstant); 
+        
         currentNewsIndex = 0;
-        
         shakeVideo.pause(); 
-        
         loadNews(currentNewsIndex);
     }
 

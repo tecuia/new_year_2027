@@ -24,8 +24,8 @@ body, html {
 
 #app {
     position: relative;
-    width: 360px;
-    height: 800px;
+    width: 100vw;
+    height: 100dvh;
     background: #F4F0E5;
     overflow: hidden;
     transform-origin: center center;
@@ -51,18 +51,19 @@ body, html {
 
 .bg-img, .main-video {
     position: absolute;
-    width: 480px;
-    height: 800px;
-    left: -60px;
+    width: 100%;
+    height: 100%;
+    left: 0;
     top: 0;
     object-fit: cover;
+    object-position: center;
     z-index: 1;
 }
 
 .overlay-top {
     position: absolute;
-    width: 360px;
-    height: 330px;
+    width: 100%;
+    height: 40%;
     left: 0;
     top: 0;
     background: linear-gradient(180deg, #311305 0%, rgba(80, 42, 29, 0) 100%);
@@ -73,10 +74,10 @@ body, html {
 
 .overlay-bottom {
     position: absolute;
-    width: 360px;
-    height: 497px;
+    width: 100%;
+    height: 60%;
     left: 0;
-    top: 303px;
+    top: 40%;
     background: linear-gradient(0deg, #311305 0%, rgba(80, 42, 29, 0) 100%);
     mix-blend-mode: multiply;
     opacity: 0.9;
@@ -86,8 +87,8 @@ body, html {
 
 #scene-news .overlay-bottom,
 #scene-packshot .overlay-bottom {
-    height: 425px;
-    top: 375px;
+    height: 60%;
+    top: 40%;
 }
 
 @keyframes fadeInUp {
@@ -112,34 +113,35 @@ body, html {
 
 .logo {
     position: absolute;
-    width: 100px;
+    width: 120px;
     left: 50%;
     transform: translateX(-50%);
-    top: 20px;
+    top: 30px;
     z-index: 5;
 }
 
+/* Заголовок — 2x от прежнего десктопа. Раньше был 320px, теперь 640px. */
 .title-img {
     position: absolute;
-    width: 251.83px;
-    left: 53.59px;
-    top: 70px;
+    width: 640px;
+    left: calc(50% - 320px);
+    top: 120px;
     z-index: 5;
 }
 
 .small-title {
-    width: 146.9px;
-    left: 106.46px;
+    width: 374px;
+    left: calc(50% - 187px);
 }
 
 .subtitle {
     position: absolute;
-    width: 360px;
+    width: 100%;
     left: 0;
-    top: 205px;
+    top: 300px;
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 100%;
     text-align: center;
     text-transform: uppercase;
@@ -149,8 +151,6 @@ body, html {
 
 .text-box {
     position: absolute;
-    left: 16px;
-    width: 328px;
     background: rgba(33, 10, 4, 0.8);
     border-radius: 16px;
     z-index: 5;
@@ -163,24 +163,23 @@ body, html {
 }
 
 .intro-box {
-    top: 252px;
-    left: 8px;
-    width: 344px;
-    height: 224px;
+    width: 440px;
+    left: calc(50% - 220px);
+    top: 380px;
+    min-height: 220px;
+    padding: 24px;
     opacity: 0;
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
-    font-size: 18px;
+    font-size: 20px;
     line-height: 120%;
-    text-align: center;
-    padding: 10px 0;
     letter-spacing: -0.2px;
     animation: introFadeIn 1s ease forwards;
     animation-delay: 2.0s;
 }
 
 .intro-sentence-2 {
-    margin-top: 12px; 
+    margin-top: 12px;
 }
 
 @keyframes introFadeIn {
@@ -195,18 +194,26 @@ body, html {
     font-size: 18px;
 }
 
+.intro-box .red-bold {
+    font-size: 20px;
+}
+
 .no-wrap {
     white-space: nowrap;
 }
 
 .news-box {
-    top: 537px;
-    height: 130px;
+    width: 440px;
+    left: calc(50% - 220px);
+    top: auto;
+    bottom: 120px;
+    height: auto;
+    min-height: 130px;
     font-weight: 500;
-    font-size: 16px;
+    font-size: 18px;
     line-height: 120%;
-    padding: 15px;
-    transition: opacity 0.6s ease, visibility 0.6s; 
+    padding: 20px 24px;
+    transition: opacity 0.6s ease, visibility 0.6s;
 }
 
 .news-box.hide {
@@ -215,10 +222,12 @@ body, html {
 }
 
 .packshot-box {
-    top: 231px;
-    height: 400px;
-    padding: 20px 15px;
-    justify-content: center;
+    width: 480px;
+    left: calc(50% - 240px);
+    top: 260px;
+    height: auto;
+    min-height: 380px;
+    padding: 24px;
     gap: 8px;
 }
 
@@ -248,16 +257,17 @@ body, html {
 
 .btn {
     position: absolute;
-    width: 328px;
-    height: 52px;
-    left: 16px;
-    top: 688px;
+    width: 360px;
+    height: 56px;
+    left: calc(50% - 180px);
+    top: auto;
+    bottom: 80px;
     background: #B60225;
     border: none;
     border-radius: 8px;
     font-family: 'Inter', sans-serif;
     font-weight: 500;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 100%;
     color: #F5EBDD;
     cursor: pointer;
@@ -276,6 +286,35 @@ body, html {
     animation: shake 1.5s infinite;
 }
 
+.btn-next {
+    bottom: 160px;
+    background: #F5C642;
+    color: #210A04;
+    transform: translateY(-15px);
+}
+
+.btn-congrats {
+    bottom: 80px;
+    background: #B60225;
+    color: #F5EBDD;
+    transform: translateY(15px);
+}
+
+.btn-next.show,
+.btn-congrats.show {
+    transform: translateY(0);
+}
+
+.btn-next.hide-up {
+    transform: translateY(-40px);
+    opacity: 0;
+}
+
+.btn-congrats.hide-down {
+    transform: translateY(40px);
+    opacity: 0;
+}
+
 @keyframes shake {
     0%, 100% { transform: translateX(0); }
     10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
@@ -284,9 +323,11 @@ body, html {
 
 .ball-video-container {
     position: absolute;
-    width: 325px;
-    height: 328px;
-    left: 17.5px;
+    --ball-size: min(42vh, 80vw);
+    width: var(--ball-size);
+    height: var(--ball-size);
+    left: calc(50% - var(--ball-size) * 0.5);
+    top: 28vh;
     border-radius: 50%;
     overflow: hidden;
     z-index: 3;
@@ -300,9 +341,9 @@ body, html {
 
 .mask-overlay {
     position: absolute;
-    width: 480px;
-    height: 800px;
-    left: -60px;
+    width: 100%;
+    height: 100%;
+    left: 0;
     top: 0;
     object-fit: cover;
     z-index: 4;
@@ -314,7 +355,7 @@ body, html {
     width: min(90vw, 600px);
     left: 50%;
     transform: translateX(-50%);
-    top: clamp(110px, 18vh, 180px);
+    top: clamp(120px, 20vh, 180px);
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     font-size: clamp(16px, min(5vw, 2.8vh), 28.5px);
@@ -326,10 +367,12 @@ body, html {
 
 #audio-btn {
     position: absolute;
-    width: 36px;
-    height: 36px;
-    left: 314px;
-    top: 754px;
+    width: 44px;
+    height: 44px;
+    left: auto;
+    right: 30px;
+    top: auto;
+    bottom: 30px;
     background: transparent;
     border: none;
     z-index: 100;
@@ -345,11 +388,12 @@ body, html {
 
 .packshot-video {
     position: absolute;
-    width: 480px;
-    height: 800px;
-    left: -60px;
+    width: 100%;
+    height: 100%;
+    left: 0;
     top: 0;
-    z-index: 2; 
+    object-fit: cover;
+    z-index: 2;
 }
 
 .dark-bg {
@@ -359,12 +403,12 @@ body, html {
 #scene-packshot .text-box,
 #scene-packshot .logo,
 #scene-packshot .title-img {
-    z-index: 5; 
+    z-index: 5;
 }
 
 #scene-packshot .overlay-top,
 #scene-packshot .overlay-bottom {
-    z-index: 3; 
+    z-index: 3;
 }
 
 #app.instant .scene {
@@ -372,13 +416,13 @@ body, html {
 }
 
 @keyframes shrinkTitle {
-    from { width: 252px; left: 54px; }
-    to { width: 147px; left: 106px; }
+    from { width: 640px; left: calc(50% - 320px); }
+    to   { width: 374px; left: calc(50% - 187px); }
 }
 
 @keyframes expandTitle {
-    from { width: 147px; left: 106px; }
-    to { width: 252px; left: 54px; }
+    from { width: 374px; left: calc(50% - 187px); }
+    to   { width: 640px; left: calc(50% - 320px); }
 }
 
 #scene-news.active .small-title {
@@ -395,8 +439,7 @@ body, html {
         height: 100dvh;
     }
 
-    /* Фон на весь экран */
-    .bg-img, 
+    .bg-img,
     .mask-overlay {
         width: 100%;
         height: 100%;
@@ -406,7 +449,6 @@ body, html {
         object-position: center;
     }
 
-    /* Возвращаем затемнение на весь фон */
     .overlay-top {
         width: 100%;
         height: 40vh;
@@ -434,7 +476,7 @@ body, html {
 
     .title-img {
         width: 70vw;
-        left: calc(50% - 35vw); 
+        left: calc(50% - 35vw);
         top: 8vh;
     }
 
@@ -446,12 +488,12 @@ body, html {
 
     @keyframes shrinkTitle {
         from { width: 70vw; left: calc(50% - 35vw); }
-        to { width: 40vw; left: calc(50% - 20vw); }
+        to   { width: 40vw; left: calc(50% - 20vw); }
     }
 
     @keyframes expandTitle {
         from { width: 40vw; left: calc(50% - 20vw); }
-        to { width: 70vw; left: calc(50% - 35vw); }
+        to   { width: 70vw; left: calc(50% - 35vw); }
     }
 
     .subtitle {
@@ -468,13 +510,13 @@ body, html {
         padding: 2vh 4vw;
         font-size: clamp(14px, 4.5vw, 18px);
     }
-    
+
     .intro-box .red-bold {
         font-size: clamp(14px, 4.5vw, 18px);
     }
-    
+
     .intro-sentence-2 {
-        margin-top: 2vh; 
+        margin-top: 2vh;
     }
 
     .btn {
@@ -489,12 +531,6 @@ body, html {
         bottom: 8vh;
     }
 
-    .news-title {
-        width: 90vw;
-        top: 21vh; 
-        font-size: clamp(18px, 5vw, 24px);
-    }
-
     .ball-video-container {
         width: 90vw;
         height: 90vw;
@@ -506,7 +542,7 @@ body, html {
         width: 92vw;
         left: 4vw;
         top: auto;
-        bottom: 10vh; 
+        bottom: 10vh;
         min-height: 18vh;
         font-size: clamp(14px, 4vw, 16px);
         padding: 2vh 4vw;
@@ -550,20 +586,20 @@ body, html {
     .packshot-box {
         width: 90vw;
         left: 5vw;
-        top: 26vh; 
-        min-height: 50vh; 
-        padding: 4vh 6vw; 
-        gap: 2.5vh; 
+        top: 26vh;
+        min-height: 50vh;
+        padding: 4vh 6vw;
+        gap: 2.5vh;
         justify-content: center;
     }
 
     .packshot-box .main-text {
         font-size: clamp(14px, 4vw, 17px);
-        line-height: 135%; 
+        line-height: 135%;
     }
 
     .packshot-box .main-text p {
-        margin-bottom: 8px; 
+        margin-bottom: 8px;
     }
 
     .packshot-box .main-text p:last-child {
@@ -572,15 +608,7 @@ body, html {
 
     .packshot-box .red-text {
         font-size: clamp(18px, 5vw, 22px);
-        margin-top: 0 !important; 
-    }
-
-    .packshot-box .main-text {
-        font-size: clamp(18px, 4vw, 18px);
-    }
-
-    .packshot-box .red-text {
-        font-size: clamp(18px, 5vw, 22px);
+        margin-top: 0 !important;
     }
 
     #audio-btn {
@@ -593,180 +621,10 @@ body, html {
     }
 }
 
-@media (min-width: 768px) {
-    #app {
-        width: 100vw;
-        height: 100dvh;
-        transform: none !important;
-    }
-
-    .bg-img, 
-    .mask-overlay, 
-    .packshot-video {
-        width: 100%;
-        height: 100%;
-        left: 0;
-        top: 0;
-        object-fit: cover;
-        object-position: center;
-    }
-
-    .overlay-top {
-        width: 100%;
-        height: 40%;
-    }
-
-    .overlay-bottom {
-        width: 100%;
-        height: 60%;
-        top: 40%;
-    }
-
-    #scene-news .overlay-bottom,
-    #scene-packshot .overlay-bottom {
-        height: 60%;
-        top: 40%;
-    }
-
-    .logo {
-        width: 120px;
-        top: 30px;
-    }
-
-    .title-img {
-        width: 320px;
-        left: calc(50% - 160px);
-        top: 90px;
-    }
-
-    .news-title {
-        top: 185px; 
-    }
-
-    .small-title {
-        width: 187px;
-        left: calc(50% - 93.5px);
-        top: 90px;
-    }
-
-    @keyframes shrinkTitle {
-        from { width: 320px; }
-        to { width: 187px; }
-    }
-
-    @keyframes expandTitle {
-        from { width: 187px; }
-        to { width: 320px; }
-    }
-
-    .subtitle {
-        width: 100%;
-        top: 300px; 
-        font-size: 16px;
-    }
-
-    .intro-box {
-        width: 440px;
-        left: calc(50% - 220px);
-        top: 360px; 
-        height: auto;
-        min-height: 220px;
-        padding: 24px;
-        font-size: 20px;
-    }
-
-    .intro-box .red-bold {
-        font-size: 20px;
-    }
-
-    .news-box {
-        width: 440px;
-        left: calc(50% - 220px);
-        top: auto;
-        bottom: 120px;
-        height: auto;
-        min-height: 130px;
-        font-size: 18px;
-        padding: 20px 24px;
-    }
-
-    .ball-video-container {
-        --ball-size: min(42vh, 80vw);
-        width: var(--ball-size);
-        height: var(--ball-size);
-        left: calc(50% - var(--ball-size) * 0.5);
-        top: 28vh !important; 
-    }
-
-    .btn {
-        width: 360px;
-        left: calc(50% - 180px);
-        top: auto;
-        bottom: 80px;
-        height: 56px;
-        font-size: 18px;
-    }
-
-    .btn-next {
-        bottom: 160px;
-        background: #F5C642;
-        color: #210A04;
-        transform: translateY(-15px);
-    }
-
-    .btn-congrats {
-        bottom: 80px;
-        background: #B60225;
-        color: #F5EBDD;
-        transform: translateY(15px);
-    }
-
-    .btn-next.show,
-    .btn-congrats.show {
-        transform: translateY(0);
-    }
-
-    .btn-next.hide-up {
-        transform: translateY(-40px);
-        opacity: 0;
-    }
-
-    .btn-congrats.hide-down {
-        transform: translateY(40px);
-        opacity: 0;
-    }
-
-    .packshot-box {
-        width: 480px;
-        left: calc(50% - 240px);
-        top: 260px;
-        height: auto;
-        min-height: 380px;
-        padding: 24px;
-    }
-
-    .packshot-box .main-text {
-        font-size: 18px;
-    }
-
-    .packshot-box .red-text {
-        font-size: 22px;
-    }
-
-    #audio-btn {
-        left: auto;
-        right: 30px;
-        top: auto;
-        bottom: 30px;
-        width: 44px;
-        height: 44px;
-    }
-}
-
 @media (min-width: 768px) and (max-height: 1000px) {
     #app {
-        --title-w: min(320px, 34vh);
-        --small-title-w: min(187px, 19.9vh);
+        --title-w: min(640px, 68vh);
+        --small-title-w: min(374px, 39.8vh);
         --logo-w: min(120px, 13vh);
     }
 
@@ -800,6 +658,122 @@ body, html {
         left: calc(50% - min(150px, 27.5vw));
         height: min(56px, 6.5vh);
         font-size: min(18px, 2.3vh);
-        
+    }
+}
+
+@media (min-width: 1920px) {
+    #app {
+        --u: calc(100vw / 1920);
+    }
+
+    .logo {
+        width: calc(120 * var(--u));
+        top: calc(30 * var(--u));
+    }
+
+    .title-img {
+        width: calc(640 * var(--u));
+        left: calc(50% - 320 * var(--u));
+        top: calc(90 * var(--u));
+    }
+
+    .small-title {
+        width: calc(374 * var(--u));
+        left: calc(50% - 187 * var(--u));
+    }
+
+    @keyframes shrinkTitle {
+        from { width: calc(640 * var(--u)); left: calc(50% - 320 * var(--u)); }
+        to   { width: calc(374 * var(--u)); left: calc(50% - 187 * var(--u)); }
+    }
+
+    @keyframes expandTitle {
+        from { width: calc(374 * var(--u)); left: calc(50% - 187 * var(--u)); }
+        to   { width: calc(640 * var(--u)); left: calc(50% - 320 * var(--u)); }
+    }
+
+    .subtitle {
+        top: calc(270 * var(--u));
+        font-size: calc(16 * var(--u));
+    }
+
+    .intro-box {
+        width: calc(440 * var(--u));
+        left: calc(50% - 220 * var(--u));
+        top: calc(360 * var(--u));
+        min-height: calc(220 * var(--u));
+        padding: calc(24 * var(--u));
+        font-size: calc(20 * var(--u));
+        border-radius: calc(16 * var(--u));
+    }
+
+    .intro-box .red-bold { font-size: calc(20 * var(--u)); }
+    .intro-sentence-2 { margin-top: calc(12 * var(--u)); }
+
+    .news-title {
+        width: min(90vw, calc(600 * var(--u)));
+        top: clamp(calc(120 * var(--u)), 20vh, calc(180 * var(--u)));
+        font-size: clamp(calc(16 * var(--u)), min(5vw, 2.8vh), calc(28.5 * var(--u)));
+    }
+
+    .news-box {
+        width: calc(440 * var(--u));
+        left: calc(50% - 220 * var(--u));
+        bottom: calc(140 * var(--u));
+        min-height: calc(130 * var(--u));
+        font-size: calc(18 * var(--u));
+        padding: calc(20 * var(--u)) calc(24 * var(--u));
+        border-radius: calc(16 * var(--u));
+    }
+
+    .packshot-box {
+        width: calc(480 * var(--u));
+        left: calc(50% - 240 * var(--u));
+        top: calc(280 * var(--u));
+        min-height: calc(380 * var(--u));
+        padding: calc(24 * var(--u));
+        gap: calc(8 * var(--u));
+    }
+
+    .packshot-box .main-text { font-size: calc(18 * var(--u)); }
+    .packshot-box .main-text p { margin-bottom: calc(12 * var(--u)); }
+    .packshot-box .red-text { font-size: calc(22 * var(--u)); }
+
+    .btn {
+        width: calc(360 * var(--u));
+        height: calc(56 * var(--u));
+        left: calc(50% - 180 * var(--u));
+        font-size: calc(18 * var(--u));
+        border-radius: calc(8 * var(--u));
+    }
+
+    .btn-next {
+        bottom: calc(160 * var(--u));
+        transform: translateY(calc(-15 * var(--u)));
+    }
+
+    .btn-congrats {
+        bottom: calc(80 * var(--u));
+        transform: translateY(calc(15 * var(--u)));
+    }
+
+    .btn-next.show,
+    .btn-congrats.show {
+        transform: translateY(0);
+    }
+
+    .btn-next.hide-up {
+        transform: translateY(calc(-40 * var(--u)));
+    }
+
+    .btn-congrats.hide-down {
+        transform: translateY(calc(40 * var(--u)));
+    }
+
+    #audio-btn {
+        width: calc(44 * var(--u));
+        height: calc(44 * var(--u));
+        right: calc(30 * var(--u));
+        bottom: calc(30 * var(--u));
     }
 }

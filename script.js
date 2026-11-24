@@ -72,10 +72,23 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             video: 'vid/news2.mp4',
-            title: 'Тот самый звонок, которого вы ждали',
-            text: 'Проект утвердили, бюджет согласовали, а команда наконец-то выдохнула и улыбнулась. Всё получилось именно так, как вы хотели.'
+            title: 'С давним другом оказалось всё так же легко',
+            text: 'Обнялись, посмотрели друг на друга и одновременно вспомнили ту самую шутку.'
+        },
+        {
+            video: 'vid/news3.mp4',
+            title: 'На ужин собрались свои',
+            text: 'Кто-то принёс пирог, кто-то сразу полез за тарелками. Ещё до ужина стало понятно: вечер удался.'
         }
     ];
+
+    const selectedNews = shuffleArray([...newsData]).slice(0, 2);
+
+    selectedNews.forEach(news => {
+        const preloadVid = document.createElement('video');
+        preloadVid.src = news.video;
+        preloadVid.preload = 'auto';
+    });
 
     shuffleArray(newsData);
 
@@ -155,7 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         document.querySelector('.news-box').classList.remove('hide');
         
-        const currentNews = newsData[index];
+        const currentNews = selectedNews[index];
         newsMainTitle.innerHTML = currentNews.title.replace(/\n/g, '<br>');
         newsTextBlock.textContent = currentNews.text;
         
@@ -176,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function onNewsVideoEnded() {
         document.querySelector('.news-box').classList.add('hide');
 
-        if (currentNewsIndex >= newsData.length - 1) {
+        if (currentNewsIndex >= selectedNews.length - 1) {
             btnNextNews.classList.remove('show');
         } else {
             btnNextNews.classList.add('show');
